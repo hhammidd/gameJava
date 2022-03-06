@@ -8,5 +8,10 @@ pipeline{
                 welcome('Hari')
             }
         }
+        stage("build-test") {
+                    steps{
+                        sh "mvn clean install"
+                    }
+                }
     }
 }
