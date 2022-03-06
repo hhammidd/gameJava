@@ -3,15 +3,11 @@
 pipeline{
     agent any
     stages{
-        stage('Demo'){
-            steps{
-                welcome('Hari')
-            }
-        }
+
         stage('Git branch'){
                     steps {
 //                     sh "echo \{GIT_BRANCH}"
-                        welcome("${GIT_BRANCH}")
+                        welcome('HAMID', "${GIT_BRANCH}", "${BUILD_NUMBER}")
                     }
         }
 //         stage("build-test") {
