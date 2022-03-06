@@ -13,5 +13,13 @@ pipeline{
                         sh "mvn clean install"
                     }
                 }
+
+        stage('version'){
+                             IMAGE = readMavenPom().getArtifactId()
+                                VERSION = readMavenPom().getVersion()
+                                echo "IMAGE: ${IMAGE}"
+                                echo "VERSION: ${VERSION}"
+                        }
+
     }
 }
