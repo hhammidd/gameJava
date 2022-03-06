@@ -13,21 +13,21 @@ pipeline{
                         sh "mvn clean install"
                     }
                 }
-                stage("build-test") {
-                           steps {
-                                               sh "mvn -N help:effective-pom -Doutput=target/pom-effective.xml"
-
-                                               script {
-                                                   pom = readMavenPom(file: 'target/pom-effective.xml')
-                                                   projectArtifactId = pom.getArtifactId()
-                                                   projectGroupId = pom.getGroupId()
-                                                   projectVersion = pom.getVersion()
-                                                   projectName = pom.getName()
-                                               }
-
-                                               echo "Building ${projectArtifactId}:${projectVersion}"
-                                           }
-                                }
+//                 stage("build-test") {
+//                            steps {
+//                                                sh "mvn -N help:effective-pom -Doutput=target/pom-effective.xml"
+//
+//                                                script {
+//                                                    pom = readMavenPom(file: 'target/pom-effective.xml')
+//                                                    projectArtifactId = pom.getArtifactId()
+//                                                    projectGroupId = pom.getGroupId()
+//                                                    projectVersion = pom.getVersion()
+//                                                    projectName = pom.getName()
+//                                                }
+//
+//                                                echo "Building ${projectArtifactId}:${projectVersion}"
+//                                            }
+//                                 }
 
 
 
