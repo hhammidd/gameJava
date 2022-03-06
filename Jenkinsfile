@@ -10,7 +10,7 @@ pipeline{
         }
         stage('Git branch'){
                     steps {
-                        echo $GIT_BRANCH
+
                         welcome($GIT_BRANCH)
                     }
         }
