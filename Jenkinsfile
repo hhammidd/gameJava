@@ -10,8 +10,8 @@ pipeline{
         }
         stage('Git branch'){
                     steps {
-                    sh "echo $\{GIT_BRANCH}"
-//                         welcome($GIT_BRANCH)
+//                     sh "echo \{GIT_BRANCH}"
+                        welcome({GIT_BRANCH})
                     }
         }
 //         stage("build-test") {
