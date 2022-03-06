@@ -13,13 +13,23 @@ pipeline{
                         sh "mvn clean install"
                     }
                 }
+                stage("build-test") {
+                           steps {
+                                               sh "mvn -N help:effective-pom -Doutput=target/pom-effective.xml"
 
-        stage('version'){
-                             IMAGE = readMavenPom().getArtifactId()
-                                VERSION = readMavenPom().getVersion()
-                                echo "IMAGE: ${IMAGE}"
-                                echo "VERSION: ${VERSION}"
-                        }
+                                               script {
+                                                   pom = readMavenPom(file: 'target/pom-effective.xml')
+                                                   projectArtifactId = pom.getArtifactId()
+                                                   projectGroupId = pom.getGroupId()
+                                                   projectVersion = pom.getVersion()
+                                                   projectName = pom.getName()
+                                               }
+
+                                               echo "Building ${projectArtifactId}:${projectVersion}"
+                                           }
+                                }
+
+
 
     }
 }
